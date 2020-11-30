@@ -1,0 +1,21 @@
+sudo: require
+services:
+    - docker
+language: generic 
+
+before_install:
+    - docker build -t ccifuentes95/multimodule -f ./client/Dockerfile.dev ./client
+
+script:
+    - docker run -e CI=true ccifuentes95/multimodule npm test
+
+after_success:
+    - docker build -t ccifuentes95/multi-client ./client
+    - docker build -t ccifuentes95/multi-api ./api
+    - docker build -t ccifuentes95/multi-worker ./worker
+    - docker build -t ccifuentes95/multi-server ./server
+    - echo "$DOCKER_PASSWORD" || docker login -u "$DOCKER_ID" --password-stdin
+    - docker push ccifuentes95/multi-client 
+    - docker push ccifuentes95/multi-api 
+    - docker push ccifuentes95/multi-worker 
+    - docker push ccifuentes95/multi-server 
