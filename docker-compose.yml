@@ -3,7 +3,7 @@ services:
     postgres:
         image: postgres
         environment:
-            POSTGRES_PASSWORD: 'root'
+            POSTGRES_PASSWORD: 'root12345'
     redis:
         image: redis
     server:
@@ -28,7 +28,7 @@ services:
             PG_USER: 'postgres'
             PG_HOST: 'postgres'
             PG_DATABASE: 'postgres'
-            PG_PASSWORD: 'root'
+            PG_PASSWORD: 'root12345'
             PG_PORT: '5432'
             PORT: '3000'
     client:
