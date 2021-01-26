@@ -15,10 +15,10 @@ after_success:
     - docker build -t ccifuentes95/multi-worker ./worker
     - docker build -t ccifuentes95/multi-server ./server
     - echo "$DOCKER_PASSWORD" || docker login -u "$DOCKER_ID" --password-stdin
-    - docker push ccifuentes95/multi-client 
-    - docker push ccifuentes95/multi-api 
-    - docker push ccifuentes95/multi-worker 
-    - docker push ccifuentes95/multi-server 
+    - docker push ccifuentes95/multi-client:latest 
+    - docker push ccifuentes95/multi-api:latest 
+    - docker push ccifuentes95/multi-worker:latest 
+    - docker push ccifuentes95/multi-server:latest
 
 deploy:
     provider: elasticbeanstalk
