@@ -10,11 +10,12 @@ script:
     - docker run -e CI=true ccifuentes95/multimodule npm test
 
 after_success:
+    - docker logout
+    - echo "$DOCKER_PASSWORD" || docker login -u "$DOCKER_ID" --password-stdin
     - docker build -t ccifuentes95/multi-client ./client
     - docker build -t ccifuentes95/multi-api ./api
     - docker build -t ccifuentes95/multi-worker ./worker
     - docker build -t ccifuentes95/multi-server ./server
-    - echo "$DOCKER_PASSWORD" || docker login -u "$DOCKER_ID" --password-stdin
     - docker push ccifuentes95/multi-client:latest 
     - docker push ccifuentes95/multi-api:latest 
     - docker push ccifuentes95/multi-worker:latest 
