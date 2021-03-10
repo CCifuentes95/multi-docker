@@ -13,4 +13,4 @@ docker push ccifuentes95/multi-worker:$SHA
 kubectl apply -f k8s
 kubectl set image deployments/client-deployment client=ccifuentes95/multi-client:$SHA
 kubectl set image deployments/api-deployment api=ccifuentes95/multi-api:$SHA
-kubectl set image deployments/api-deployment worker=ccifuentes95/multi-api:$SHA
+kubectl set image deployments/worker-deployment worker=ccifuentes95/multi-api:$SHA
