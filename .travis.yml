@@ -14,7 +14,7 @@ before_install:
   - gcloud auth activate-service-account --key-file service-account.json
   - gcloud config set project nomadic-archway-276315
   - gcloud config set compute/zone us-central1-c
-  - gcloud container clusters get-credentials my-first-cluster-1
+  - gcloud container clusters get-credentials dev-cluster
   - docker logout
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker build -t ccifuentes95/react-test -f ./client/Dockerfile.dev ./client
