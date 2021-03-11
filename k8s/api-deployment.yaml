@@ -15,10 +15,6 @@ spec:
       containers:
       - name: api
         image: ccifuentes95/multi-api
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
         ports:
         - containerPort: 3000
         env:
